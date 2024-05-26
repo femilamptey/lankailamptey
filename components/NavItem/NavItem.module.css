@@ -1,0 +1,18 @@
+.navdiv {
+    flex-direction: column;
+    display: flex;
+    color: #888888;
+}
+
+.navitem {
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.navitem:hover {
+    color: #000000;
+}
+
+.active {
+    color: #000000;
+}

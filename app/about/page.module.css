@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: 2rem 0;
+}
+
+.column-left {
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+}
+
+.text {
+    padding: 1rem 0;
+}
+
+.startedBtn {
+    margin: 50px 50px;
+    border: 2px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    background: white;
+    color: black;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 225px;
+    height: 60px;
+    align-self: center;
+
+    &:hover {
+        background: black;
+        color: white;
+    }
+}
+
+.column-right {
+
+}

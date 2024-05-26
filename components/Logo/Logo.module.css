@@ -1,0 +1,13 @@
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: url('/logo.svg') no-repeat center center;
+    background-size: contain;
+    position: sticky;
+    bottom: 0;
+
+    width: 58px;
+    height: 30px;
+}
