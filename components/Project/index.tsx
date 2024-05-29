@@ -5,6 +5,7 @@ import React from "react";
 import Image from 'next/image';
 import Link from "next/link";
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 export interface ProjectProps {
     imagePath: string;
@@ -46,19 +47,29 @@ const Project: React.FC<ProjectProps> = ({imagePath, link, caption}) => {
     }, []);
 
     return (
-        <div className={styles.projectContainer}>
-            <Link href={link} target="_blank" rel="noopener noreferrer">
-                <Image
-                    src={imagePath}
-                    alt={caption}
-                    width={dimensions.width}
-                    height={dimensions.height}
-                />
-            </Link>
-            <div className={styles.caption}>
-                {caption}
+        <motion.div
+            key={caption} whileHover={{
+            scale: 1.075,
+            transition: {
+                    duration: .4
+                }
+        }}
+        >
+            <div className={styles.projectContainer}>
+                <Link href={link} target="_blank" rel="noopener noreferrer">
+                    <Image
+                        src={imagePath}
+                        alt={caption}
+                        width={dimensions.width}
+                        height={dimensions.height}
+                    />
+                </Link>
+                <div className={styles.caption}>
+                    {caption}
+                </div>
             </div>
-        </div>
+        </motion.div>
+
     )
 }
 

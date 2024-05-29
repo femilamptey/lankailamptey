@@ -1,4 +1,50 @@
 .reelcontainer {
-    width: 800%;
+    width: 800px;
     height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.iframe {
+    width: 800px;
+    height: 450px;
+    max-width: 800px;
+    max-height: 450px;
+}
+
+/* Mobile */
+@media (max-width: 800px) {
+
+    .reelcontainer {
+        width: 600px;
+        height: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem 0;
+    }
+
+    .iframe {
+        width: 600px;
+        height: 350px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .reelcontainer {
+        width: 500px;
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem 0;
+    }
+
+    .iframe {
+        width: 400px;
+        height: 300px;
+    }
 }

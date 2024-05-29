@@ -5,6 +5,7 @@ import {usePathname, useRouter} from "next/navigation";
 import { HeaderFooterProps } from "../NavItem";
 import styles from "./Header.module.css";
 import navStyles from "../NavItem/NavItem.module.css";
+import Link from "next/link";
 
 const Header: React.FC<HeaderFooterProps> = ({ navLinks }) => {
     const router = useRouter();
@@ -22,13 +23,13 @@ const Header: React.FC<HeaderFooterProps> = ({ navLinks }) => {
         <div className={styles.headerbody}>
             <div className={navStyles.navdiv}>
                 {navLinks.map((navLink) => (
-                    <div
+                    <Link
                         className={`${navStyles.navitem} ${isActive(navLink.path) ? navStyles.active : ''}`}
                         key={navLink.path}
-                        onClick={handleNavigation(navLink.path)}
+                        href={navLink.path}
                     >
                         {navLink.name}
-                    </div>
+                    </Link>
                 ))}
             </div>
             <div className={styles.nameitem}>

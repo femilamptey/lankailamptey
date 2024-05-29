@@ -11,6 +11,7 @@
     display: flex;
     flex-direction: column;
     font-size: 20px;
+    text-align: left;
 }
 
 .text {
@@ -30,13 +31,49 @@
     width: 225px;
     height: 60px;
     align-self: center;
+}
 
-    &:hover {
-        background: black;
-        color: white;
-    }
+.startedBtn:hover {
+    background: black;
+    color: white;
 }
 
 .column-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+/* Media Queries for Responsiveness */
+
+/* Mobile */
+@media (max-width: 1100px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .column-right {
+        order: -1; /* Move the image to the top */
+        width: 100%;
+        justify-content: center;
+    }
+
+    .column-left {
+        font-size: 20px;
+        width: 100%;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .text {
+        padding: 0.5rem 0;
+    }
+
+    .startedBtn {
+        width: 180px;
+        height: 45px;
+        margin: 20px 0;
+    }
 }

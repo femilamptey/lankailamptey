@@ -6,3 +6,22 @@
     border-radius: 50%;
     object-fit: cover;
 }
+
+@media (max-width: 768px) {
+    .profilePicture {
+        width: 450px;
+        height: 450px;
+        max-width: 500px;
+        max-height: 500px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .profilePicture {
+        width: 350px;
+        height: 350px;
+        max-width: 400px;
+        max-height: 400px;
+    }
+}
