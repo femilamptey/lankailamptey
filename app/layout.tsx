@@ -1,5 +1,3 @@
-'use client';
-
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -8,10 +6,10 @@ import AnimatedLayout from "../components/AnimatedLayout";
 const inter = Inter({ subsets: ["latin"] });
 import ReduxProvider from "../components/ReduxProvider";
 
-// export const metadata: Metadata = {
-//   title: "Lankai Lamptey - Motion & 3D Designer",
-//   description: "Motion & 3D Designer",
-// };
+export const metadata: Metadata = {
+  title: "Lankai Lamptey - Motion & 3D Designer",
+  description: "Motion & 3D Designer",
+};
 
 export default function RootLayout({
   children,
