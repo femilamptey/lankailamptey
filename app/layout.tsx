@@ -5,6 +5,7 @@ import React from "react";
 import AnimatedLayout from "../components/AnimatedLayout";
 const inter = Inter({ subsets: ["latin"] });
 import ReduxProvider from "../components/ReduxProvider";
+import Head from "next/head";
 
 export const metadata: Metadata = {
   title: "Lankai Lamptey - Motion & 3D Designer",
@@ -19,14 +20,17 @@ export default function RootLayout({
 
     return (
         <html lang="en">
-          <body className={inter.className}>
-            <ReduxProvider >
-                <AnimatedLayout>
-                    {children}
-                </AnimatedLayout>
-            </ReduxProvider>
+            <Head>
+                <link rel="icon" href="/favicon.ico"/>
+            </Head>
+            <body className={inter.className}>
+                <ReduxProvider >
+                    <AnimatedLayout>
+                        {children}
+                    </AnimatedLayout>
+                </ReduxProvider>
 
-          </body>
+              </body>
         </html>
     );
 }
