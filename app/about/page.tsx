@@ -24,9 +24,9 @@ const About = () => {
     ];
 
     const footerLinks = [
-        { name: 'Twitter', path: '' },
-        { name: 'Behance', path: '' },
-        { name: 'Instagram', path: '' },
+        { name: 'Twitter', path: 'https://x.com/Lankai_' },
+        { name: 'Behance', path: 'https://www.behance.net/lankai#' },
+        { name: 'Instagram', path: 'https://www.instagram.com/lankai___?igsh=MXIxd3d3MjY0bTRvbw==' },
     ];
 
     return (

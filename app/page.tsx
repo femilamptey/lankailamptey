@@ -26,15 +26,15 @@ export default function Home() {
   const footerLinks: NavLinkProps[] = [
     {
       name: 'Twitter',
-      path: '',
+      path: 'https://x.com/Lankai_',
     },
     {
       name: 'Behance',
-      path: ''
+      path: 'https://www.behance.net/lankai#'
     },
     {
       name: 'Instagram',
-      path: ''
+      path: 'https://www.instagram.com/lankai___?igsh=MXIxd3d3MjY0bTRvbw=='
     }
   ];
 
