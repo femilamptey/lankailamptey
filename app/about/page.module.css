@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
+
 .container {
     display: flex;
     flex-direction: row;
@@ -7,11 +9,15 @@
     padding: 2rem 0;
 }
 
-.column-left {
+.columnLeft {
     display: flex;
     flex-direction: column;
     font-size: 20px;
     text-align: left;
+    width: 35%;
+    /*margin-left: 5vw;*/
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
 }
 
 .text {
@@ -38,10 +44,12 @@
     color: white;
 }
 
-.column-right {
+.columnRight {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 65%;
+    /*margin-right: 5vw;*/
 }
 
 /* Media Queries for Responsiveness */
@@ -54,13 +62,13 @@
         padding: 1rem;
     }
 
-    .column-right {
+    .columnRight {
         order: -1; /* Move the image to the top */
         width: 100%;
         justify-content: center;
     }
 
-    .column-left {
+    .columnLeft {
         font-size: 20px;
         width: 100%;
         margin-top: 15px;

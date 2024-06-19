@@ -34,7 +34,7 @@ const Project: React.FC<ProjectProps> = ({imagePath, link, caption}) => {
                 width = screenWidth * 0.8;
             }
 
-            const aspectRatio = 16 / 9;
+            const aspectRatio = 4 / 3;
             height = width / aspectRatio;
 
             setDimensions({ width, height });

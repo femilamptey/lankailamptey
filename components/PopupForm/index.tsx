@@ -52,6 +52,21 @@ const PopupForm = () => {
         dispatch(updateField({ field: name as keyof FormState, value }));
     };
 
+    const handleSubmit = () => {
+        const currentField = fields[step - 1] as keyof typeof form;
+        if (requiredFields.includes(currentField as string) && form[currentField] === '') {
+            dispatch(setError({ field: currentField, message: `Please fill in the required field` }));
+            return;
+        }
+
+        if (currentField === 'email' && !validateEmail(form.email)) {
+            dispatch(setError({ field: 'email', message: 'Please enter a valid email address' }));
+            return;
+        }
+
+        setStep((prevStep) => (prevStep < 6 ? prevStep + 1 : prevStep));
+    };
+
     const validateEmail = (email: string) => {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(email);
@@ -195,7 +210,7 @@ const PopupForm = () => {
                             </div>
                             {form.errors.budget && <p className={styles.error}>{form.errors.budget}</p>}
                             <div className={styles.navButtonRow}>
-                                <button className={styles.button} onClick={handleNext}>Next</button>
+                                <button className={styles.button} onClick={handleSubmit}>Submit</button>
                                 <button className={styles.button} onClick={handlePrevious}>Back</button>
                             </div>
                         </motion.div>

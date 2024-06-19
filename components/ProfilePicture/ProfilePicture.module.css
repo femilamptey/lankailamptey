@@ -1,8 +1,8 @@
 .profilePicture {
-    width: 600px;
-    height: 600px;
-    max-width: 700px;
-    max-height: 700px;
+    width: 835px;
+    height: 835px;
+    max-width: 835px;
+    max-height: 835px;
     border-radius: 50%;
     object-fit: cover;
 }

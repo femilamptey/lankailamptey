@@ -33,7 +33,7 @@ const About = () => {
         <main className={styles.main}>
             <Header navLinks={headerLinks} />
             <div className={aboutStyles.container}>
-                <div className={aboutStyles['column-left']}>
+                <div className={aboutStyles.columnLeft}>
                     <div className={aboutStyles.text}>
                         Hey! I’m Lankai Lamptey, a Motion <br />
                         & 3D Designer from Accra, Ghana.
@@ -53,7 +53,7 @@ const About = () => {
                         Let’s Get Started
                     </button>
                 </div>
-                <div className={aboutStyles['column-right']}>
+                <div className={aboutStyles.columnRight}>
                     <ProfilePicture imagePath="/MEMAINPFP.jpg" />
                 </div>
             </div>
