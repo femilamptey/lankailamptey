@@ -7,12 +7,14 @@ import {updateField, setError, clearForm, FormState} from '../../store/formSlice
 import styles from './PopupForm.module.css';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useForm, ValidationError } from '@formspree/react';
 
 const PopupForm = () => {
     const dispatch = useDispatch<AppDispatch>();
     const show = useSelector((state: RootState) => state.popup.isVisible);
     const form = useSelector((state: RootState) => state.form);
     const [step, setStep] = useState(1);
+    const [state, formSpreeHandleSubmit] = useForm("mldrralk");
 
     if (!show) {
         return null;
@@ -52,17 +54,43 @@ const PopupForm = () => {
         dispatch(updateField({ field: name as keyof FormState, value }));
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
         const currentField = fields[step - 1] as keyof typeof form;
         if (requiredFields.includes(currentField as string) && form[currentField] === '') {
             dispatch(setError({ field: currentField, message: `Please fill in the required field` }));
             return;
         }
 
-        if (currentField === 'email' && !validateEmail(form.email)) {
-            dispatch(setError({ field: 'email', message: 'Please enter a valid email address' }));
-            return;
-        }
+        const data = new FormData();
+        Object.keys(form).forEach((key) => {
+            if (key !== 'errors') {
+                data.append(key, form[key].toString());
+            }
+        });
+
+        fetch("https://formspree.io/f/mldrralk", {
+            method: "POST",
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then(response => {
+            if (response.ok) {
+
+            } else {
+                response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+
+                    } else {
+
+                    }
+                })
+            }
+        }).catch(error => {
+
+        });
 
         setStep((prevStep) => (prevStep < 6 ? prevStep + 1 : prevStep));
     };
@@ -80,7 +108,7 @@ const PopupForm = () => {
 
     return (
         <div className={styles.overlay}>
-            <div className={styles.popup}>
+            <form className={styles.popup} onSubmit={handleSubmit} method="post">
                 <button className={styles.closeButton} onClick={handleClose}>Exit</button>
                 <AnimatePresence mode={"wait"}>
                     {step === 1 && (
@@ -90,13 +118,14 @@ const PopupForm = () => {
                             <input
                                 className={styles.input}
                                 type="text"
+                                id="email"
                                 name="name"
                                 value={form.name}
                                 onChange={handleChange}
                             />
                             {form.errors.name && <p className={styles.error}>{form.errors.name}</p>}
                             <div className={styles.navButtonRow}>
-                                <button className={styles.button} onClick={handleNext}>Next</button>
+                                <button type="button" className={styles.button} onClick={handleNext}>Next</button>
                             </div>
                         </motion.div>
                     )}
@@ -108,14 +137,15 @@ const PopupForm = () => {
                             <input
                                 className={styles.input}
                                 type="email"
+                                id="email"
                                 name="email"
                                 value={form.email}
                                 onChange={handleChange}
                             />
                             {form.errors.email && <p className={styles.error}>{form.errors.email}</p>}
                             <div className={styles.navButtonRow}>
-                                <button className={styles.button} onClick={handleNext}>Next</button>
-                                <button className={styles.button} onClick={handlePrevious}>Back</button>
+                                <button type="button" className={styles.button} onClick={handleNext}>Next</button>
+                                <button type="button" className={styles.button} onClick={handlePrevious}>Back</button>
                             </div>
                         </motion.div>
                     )}
@@ -126,13 +156,14 @@ const PopupForm = () => {
                             <input
                                 className={styles.input}
                                 type="text"
+                                id="social"
                                 name="social"
                                 value={form.social}
                                 onChange={handleChange}
                             />
                             <div className={styles.navButtonRow}>
-                                <button className={styles.button} onClick={handleNext}>Next</button>
-                                <button className={styles.button} onClick={handlePrevious}>Back</button>
+                                <button type="button" className={styles.button} onClick={handleNext}>Next</button>
+                                <button type="button" className={styles.button} onClick={handlePrevious}>Back</button>
                             </div>
                         </motion.div>
                     )}
@@ -144,14 +175,15 @@ const PopupForm = () => {
                             <textarea
                                 className={styles.textarea}
                                 rows={6}
+                                id="project"
                                 name="project"
                                 value={form.project}
                                 onChange={handleChange}
                             />
                             {form.errors.project && <p className={styles.error}>{form.errors.project}</p>}
                             <div className={styles.navButtonRow}>
-                                <button className={styles.button} onClick={handleNext}>Next</button>
-                                <button className={styles.button} onClick={handlePrevious}>Back</button>
+                                <button type="button" className={styles.button} onClick={handleNext}>Next</button>
+                                <button type="button" className={styles.button} onClick={handlePrevious}>Back</button>
                             </div>
                         </motion.div>
                     )}
@@ -165,6 +197,7 @@ const PopupForm = () => {
                                     <input
                                         className={styles.radioInput}
                                         type="radio"
+                                        id="budget"
                                         name="budget"
                                         value="Less than €1,000"
                                         checked={form.budget === "Less than €1,000"}
@@ -174,6 +207,7 @@ const PopupForm = () => {
                                 <label className={styles.radioLabel}>
                                     <input
                                         type="radio"
+                                        id="budget"
                                         name="budget"
                                         value="€1,000 - €5,000"
                                         checked={form.budget === "€1,000 - €5,000"}
@@ -183,6 +217,7 @@ const PopupForm = () => {
                                 <label className={styles.radioLabel}>
                                     <input
                                         type="radio"
+                                        id="budget"
                                         name="budget"
                                         value="€5,000 - €30,000"
                                         checked={form.budget === "€5,000 - €30,000"}
@@ -192,6 +227,7 @@ const PopupForm = () => {
                                 <label className={styles.radioLabel}>
                                     <input
                                         type="radio"
+                                        id="budget"
                                         name="budget"
                                         value="€30,000 - €100,000"
                                         checked={form.budget === "€30,000 - €100,000"}
@@ -201,6 +237,7 @@ const PopupForm = () => {
                                 <label className={styles.radioLabel}>
                                     <input
                                         type="radio"
+                                        id="budget"
                                         name="budget"
                                         value="€100,000+"
                                         checked={form.budget === "€100,000+"}
@@ -210,8 +247,8 @@ const PopupForm = () => {
                             </div>
                             {form.errors.budget && <p className={styles.error}>{form.errors.budget}</p>}
                             <div className={styles.navButtonRow}>
-                                <button className={styles.button} onClick={handleSubmit}>Submit</button>
-                                <button className={styles.button} onClick={handlePrevious}>Back</button>
+                                <button type="submit" className={styles.button} onClick={handleNext}>Submit</button>
+                                <button type="button" className={styles.button} onClick={handlePrevious}>Back</button>
                             </div>
                         </motion.div>
                     )}
@@ -225,7 +262,7 @@ const PopupForm = () => {
                         </motion.div>
                     )}
                 </AnimatePresence>
-            </div>
+            </form>
         </div>
     );
 };
