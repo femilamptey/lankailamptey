@@ -5,7 +5,7 @@ import React from "react";
 import AnimatedLayout from "../components/AnimatedLayout";
 const inter = Inter({ subsets: ["latin"] });
 import ReduxProvider from "../components/ReduxProvider";
-import Head from "next/head";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   title: "Lankai Lamptey - Motion & 3D Designer",
@@ -22,6 +22,7 @@ export default function RootLayout({
         <html lang="en">
             <body className={inter.className}>
                 <ReduxProvider >
+                    <SpeedInsights />
                     <AnimatedLayout>
                         {children}
                     </AnimatedLayout>
