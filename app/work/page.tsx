@@ -41,17 +41,22 @@ const Work = () => {
         {
             imagePath: "/project-videos/arten.mp4",
             caption: "Arten SFR",
-            link: "/"
+            link: "https://youtu.be/MJ0DwjuGunI"
         },
         {
             imagePath: "/project-videos/alphagang.mp4",
             caption: "ALPHAGANG",
-            link: "/"
+            link: "https://www.behance.net/gallery/194827205/ALPHAGANG"
         },
         {
             imagePath: "/project-videos/asaawa.mp4",
             caption: "Asaawa",
-            link: "/"
+            link: "https://www.behance.net/gallery/194252241/Asaawa"
+        },
+        {
+            imagePath: "/project-videos/uefa.mp4",
+            caption: "UEFA EURO 2024 Country Animations",
+            link: "https://www.behance.net/gallery/201020091/UEFA-EURO-2024-Country-Animations",
         }
     ];
 
