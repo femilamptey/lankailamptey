@@ -2,7 +2,6 @@
 
 import styles from './Project.module.css';
 import React from "react";
-import Image from 'next/image';
 import Link from "next/link";
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
@@ -57,9 +56,11 @@ const Project: React.FC<ProjectProps> = ({imagePath, link, caption}) => {
         >
             <div className={styles.projectContainer}>
                 <Link href={link} target="_blank" rel="noopener noreferrer">
-                    <Image
+                    <video
+                        autoPlay
+                        muted
+                        loop
                         src={imagePath}
-                        alt={caption}
                         width={dimensions.width}
                         height={dimensions.height}
                     />

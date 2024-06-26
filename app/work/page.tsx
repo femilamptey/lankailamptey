@@ -1,10 +1,9 @@
-import styles from "../page.module.css";
 import workStyles from "./page.module.css";
 import Header from "../../components/Header";
 import {NavLinkProps} from "../../components/NavItem";
 import Footer from "../../components/Footer";
-import Portfolio from "@/components/Portfolio";
-import {ProjectProps} from "@/components/Project";
+import Portfolio from "../../components/Portfolio";
+import {ProjectProps} from "../../components/Project";
 
 const Work = () => {
 
@@ -40,19 +39,19 @@ const Work = () => {
 
     const projects: ProjectProps[] = [
         {
-            imagePath: "/arten gif.gif",
+            imagePath: "/project-videos/arten.mp4",
             caption: "Arten SFR",
-            link: "/project1"
+            link: "/"
         },
         {
-            imagePath: "/gif.gif",
+            imagePath: "/project-videos/alphagang.mp4",
             caption: "ALPHAGANG",
-            link: "/project1"
+            link: "/"
         },
         {
-            imagePath: "/Website Loop.gif",
+            imagePath: "/project-videos/asaawa.mp4",
             caption: "Asaawa",
-            link: "/project1"
+            link: "/"
         }
     ];
 
